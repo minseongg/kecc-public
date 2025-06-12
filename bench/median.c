@@ -4,12 +4,12 @@
 //
 // This benchmark performs a 1D three element median filter.
 
-int input_median[400];
-int results_median[400];
+unsigned input_median[400];
+unsigned results_median[400];
 
-void median_data_init(int nonce) {
-    int i;
-    int x = nonce;
+void median_data_init(unsigned nonce) {
+    unsigned i;
+    unsigned x = nonce;
 
     for (i = 0; i < 400; i++) {
         x = (x * 97 + 17) % 1000;
@@ -17,8 +17,8 @@ void median_data_init(int nonce) {
     }
 }
 
-void median(int n, int input[400], int results[400]) {
-    int A, B, C, i;
+void median(unsigned n, unsigned input[400], unsigned results[400]) {
+    unsigned A, B, C, i;
 
     // Zero the ends
     results[0] = 0;
@@ -50,12 +50,12 @@ void median(int n, int input[400], int results[400]) {
     }
 }
 
-int verify_median(int n, int* test) {
-    int i;
-    int result = 0;
+int verify_median(unsigned n, unsigned* test) {
+    unsigned i;
+    unsigned result = 0;
 
     for (i = 0; i < n; i++) {
-        int v = test[i];
+        unsigned v = test[i];
         result += v;
     }
 

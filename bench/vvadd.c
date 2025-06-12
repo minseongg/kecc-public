@@ -5,36 +5,36 @@
 // This benchmark uses adds to vectors and writes the results to a
 // third vector.
 
-int input1_vvadd[1000];
-int input2_vvadd[1000];
-int results_vvadd[1000];
+unsigned input1_vvadd[1000];
+unsigned input2_vvadd[1000];
+unsigned results_vvadd[1000];
 
-void vvadd_init(int nonce) {
-    int i;
-    int x = nonce;
-    int y = nonce;
+void vvadd_init(unsigned nonce) {
+    unsigned i;
+    unsigned x = nonce;
+    unsigned y = nonce;
 
     for (i = 0; i < 1000; i++) {
-        x = (x * 97 + 17) % 1009;
-        y = (x * 17 + 23) % 1007;
+        x = (x * 97u + 17u) % 1009u;
+        y = (x * 17u + 23u) % 1007u;
         input1_vvadd[i] = x;
         input2_vvadd[i] = y;
     }
 }
 
-void vvadd(int n, int a[1000], int b[1000], int c[1000]) {
-    int i;
+void vvadd(unsigned n, unsigned a[1000], unsigned b[1000], unsigned c[1000]) {
+    unsigned i;
 
     for (i = 0; i < n; i++)
         c[i] = a[i] + b[i];
 }
 
-int verify_vvadd(int n, int* test) {
-    int i;
-    int result = 0;
+int verify_vvadd(unsigned n, unsigned* test) {
+    unsigned i;
+    unsigned result = 0;
 
     for (i = 0; i < n; i++) {
-        int v = test[i];
+        unsigned v = test[i];
         result += v;
     }
 
